@@ -136,24 +136,24 @@ export default function Toolbar() {
       {divider()}
 
       {/* Undo / Redo */}
-      {btn(undo,  ['↩', <span key="l" style={{ fontSize: 9 }}>Undo</span>],  { title: 'Undo (Ctrl+Z)',  disabled: past.length  === 0 })}
-      {btn(redo,  ['↪', <span key="l" style={{ fontSize: 9 }}>Redo</span>],  { title: 'Redo (Ctrl+Y)',  disabled: future.length === 0 })}
+      {btn(undo,  <><span>↩</span><span style={{ fontSize: 9 }}>Undo</span></>,  { title: 'Undo (Ctrl+Z)',  disabled: past.length  === 0 })}
+      {btn(redo,  <><span>↪</span><span style={{ fontSize: 9 }}>Redo</span></>,  { title: 'Redo (Ctrl+Y)',  disabled: future.length === 0 })}
 
       {divider()}
 
       {/* Z-order (only when something selected) */}
-      {btn(bringToFront, ['⤒', <span key="l" style={{ fontSize: 9 }}>Front</span>], { title: 'Bring to Front', disabled: !selectedId })}
-      {btn(bringForward, ['↑',  <span key="l" style={{ fontSize: 9 }}>Fwd</span>],   { title: 'Bring Forward',  disabled: !selectedId })}
-      {btn(sendBackward, ['↓',  <span key="l" style={{ fontSize: 9 }}>Back</span>],  { title: 'Send Backward',  disabled: !selectedId })}
-      {btn(sendToBack,   ['⤓', <span key="l" style={{ fontSize: 9 }}>Bottom</span>],{ title: 'Send to Back',   disabled: !selectedId })}
+      {btn(bringToFront, <><span>⤒</span><span style={{ fontSize: 9 }}>Front</span></>,  { title: 'Bring to Front', disabled: !selectedId })}
+      {btn(bringForward, <><span>↑</span><span style={{ fontSize: 9 }}>Fwd</span></>,    { title: 'Bring Forward',  disabled: !selectedId })}
+      {btn(sendBackward, <><span>↓</span><span style={{ fontSize: 9 }}>Back</span></>,   { title: 'Send Backward',  disabled: !selectedId })}
+      {btn(sendToBack,   <><span>⤓</span><span style={{ fontSize: 9 }}>Bottom</span></>, { title: 'Send to Back',   disabled: !selectedId })}
 
       {divider()}
 
       {/* Export / Import / Clear */}
-      {btn(exportJSON, ['⬇', <span key="l" style={{ fontSize: 9 }}>Save</span>], { title: 'Save as JSON' })}
-      {btn(() => fileRef.current.click(), ['⬆', <span key="l" style={{ fontSize: 9 }}>Load</span>], { title: 'Load from JSON' })}
+      {btn(exportJSON,                    <><span>⬇</span><span style={{ fontSize: 9 }}>Save</span></>,  { title: 'Save as JSON' })}
+      {btn(() => fileRef.current.click(), <><span>⬆</span><span style={{ fontSize: 9 }}>Load</span></>,  { title: 'Load from JSON' })}
       <input ref={fileRef} type="file" accept=".json" style={{ display: 'none' }} onChange={handleImport} />
-      {btn(handleClearAll, ['✕', <span key="l" style={{ fontSize: 9 }}>Clear</span>], { title: 'Clear Canvas', danger: true })}
+      {btn(handleClearAll,                <><span>✕</span><span style={{ fontSize: 9 }}>Clear</span></>, { title: 'Clear Canvas', danger: true })}
 
       {/* Shortcuts hint */}
       <div style={{
@@ -167,24 +167,5 @@ export default function Toolbar() {
         <strong style={{ color: '#868e96' }}>Dbl-click</strong> Rename/Toggle
       </div>
     </header>
-  );
-}        </button>
-      ))}
-
-      <div style={{ borderLeft: '2px solid #dee2e6', paddingLeft: '15px', display: 'flex', alignItems: 'center', gap: '8px' }}>
-        <span>🎨</span>
-        <input 
-          type="color" 
-          value={universalColor} 
-          onChange={(e) => setColor(e.target.value)}
-          style={{ border: 'none', background: 'none', cursor: 'pointer', width: '30px', height: '30px' }}
-        />
-      </div>
-
-      <div style={{ marginLeft: 'auto', fontSize: '12px', color: '#868e96' }}>
-        <strong>Shortcuts:</strong> Ctrl+C (Copy), Ctrl+V (Paste), Del (Delete)<br/>
-        <strong>Actions:</strong> Dbl-click to Rename / Rotate / Open Doors
-      </div>
-    </div>
   );
 }
