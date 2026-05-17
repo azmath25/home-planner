@@ -1,9 +1,9 @@
 {
   "name": "plan-builder",
   "private": true,
-  "version": "1.0.0",
+  "version": "2.0.0",
   "type": "module",
-  "homepage": "https://azmath25.github.io/home-planner", 
+  "homepage": "https://azmath25.github.io/home-planner",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
